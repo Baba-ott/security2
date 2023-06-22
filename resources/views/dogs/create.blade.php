@@ -15,11 +15,6 @@
                     <a class="btn btn-primary" href="/dashboard">Dashboard</a>
                 </div>
             </div>
-            <div class="card shadow-sm mb-4">
-                <div class="card-body">
-                    <a class="btn btn-success" href="/dogs/create">Create a Dog</a>
-                </div>
-            </div>
             <div class="card border-0 shadow-lg my-5">
                 <div class="card-header bg-light">
                     <h2 class="text-center text-dark mb-4">Add a New Dog</h2>
