@@ -2,11 +2,11 @@
 
 use Illuminate\Support\Str;
 
-$url = env('postgres://itdetizxwgxhyp:7e903673e34842d3beaa1dcdbfb737d77cf3599c8597f2c59a0bc75a48b978a6@ec2-34-242-199-141.eu-west-1.compute.amazonaws.com:5432/ddt7klse84r52m');
-$DATABASE_URL = parse_url($url);
+$url = env('DATABASE_URL');
+
+$DATABASE_URL = $url ? parse_url($url) : null;
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Default Database Connection Name
@@ -18,7 +18,7 @@ return [
     |
     */
 
-    'default' => env('DB_CONNECTION', 'mysql'),
+    'default' => env('DB_CONNECTION', 'pgsql'),
 
     /*
     |--------------------------------------------------------------------------
@@ -48,12 +48,12 @@ return [
 
         'mysql' => [
             'driver' => 'mysql',
-            'url' => env('DATABASE_URL'),
-            'host' => $DATABASE_URL['host'],
-            'port' => $DATABASE_URL['port'],
-            'database' => ltrim($DATABASE_URL['path'], '/'),
-            'username' => $DATABASE_URL['user'],
-            'password' => $DATABASE_URL['pass'],
+            'url' => $url,
+            'host' => $DATABASE_URL['host'] ?? null,
+            'port' => $DATABASE_URL['port'] ?? null,
+            'database' => isset($DATABASE_URL['path']) ? ltrim($DATABASE_URL['path'], '/') : null,
+            'username' => $DATABASE_URL['user'] ?? null,
+            'password' => $DATABASE_URL['pass'] ?? null,
             'unix_socket' => env('DB_SOCKET', ''),
             'charset' => 'utf8mb4',
             'collation' => 'utf8mb4_unicode_ci',
