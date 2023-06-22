@@ -25,6 +25,10 @@ Route::get('/', function () {
 Route::get("/dogs", [DogController::class, 'index'])->name('dogs.index');
 Route::get("/dogs/create", [DogController::class, 'create'])->name('dogs.create');
 Route::post('/dogs', [DogController::class, 'store'])->name('dogs.store');
+Route::get('/dogs/{id}', [DogController::class, 'show'])->name('dogs.show');
+Route::get('/dogs/{id}/edit', [DogController::class, 'edit'])->name('dogs.edit');
+Route::put('/dogs/{id}', [DogController::class, 'update'])->name('dogs.update');
+Route::delete('/dogs/{id}', [DogController::class, 'destroy'])->name('dogs.destroy');
 
 Route::get('/user/{user}/make-admin', [UserController::class, 'makeAdmin'])->name('user.make-admin');
 

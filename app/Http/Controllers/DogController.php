@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Dog;
 use Illuminate\Support\Facades\DB;
+
 class DogController extends Controller
 {
     /**
@@ -44,7 +45,9 @@ class DogController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $dog = Dog::find($id);
+
+        return view('dogs.show', compact('dog'));
     }
 
     /**
@@ -52,7 +55,9 @@ class DogController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $dog = Dog::find($id);
+
+        return view('dogs.edit', compact('dog'));
     }
 
     /**
@@ -60,7 +65,15 @@ class DogController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $dog = Dog::find($id);
+
+        $dog->update([
+            'name' => $request->name,
+            'age' => $request->age,
+            'breed' => $request->breed,
+        ]);
+
+        return redirect()->route('dogs.index');
     }
 
     /**
@@ -68,6 +81,10 @@ class DogController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $dog = Dog::find($id);
+
+        $dog->delete();
+
+        return redirect()->route('dogs.index');
     }
 }

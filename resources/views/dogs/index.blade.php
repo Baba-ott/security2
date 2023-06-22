@@ -23,6 +23,7 @@
             @if ($dogs->count() > 0)
                 <ul class="list-group list-group-flush">
                     @foreach ($dogs as $dog)
+                        <a href="{{ route('dogs.show', $dog->id) }}">
                         <li class="list-group-item">{{ $dog->name }}</li>
                     @endforeach
                 </ul>
