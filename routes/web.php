@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\DogController;
 
 
 
@@ -20,6 +21,10 @@ use App\Http\Controllers\UserController;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get("/dogs", [DogController::class, 'index'])->name('dogs.index');
+Route::get("/dogs/create", [DogController::class, 'create'])->name('dogs.create');
+Route::post('/dogs', [DogController::class, 'store'])->name('dogs.store');
 
 Route::get('/user/{user}/make-admin', [UserController::class, 'makeAdmin'])->name('user.make-admin');
 
