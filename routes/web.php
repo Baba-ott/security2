@@ -74,6 +74,12 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::middleware('throttle:60,1')->group(function () {
+    Route::get('/user', function () {
+        // Your code here
+    });
+});
+
 Route::get('/admin', function () {
     // make sure the user is admin before returning the view
     if (Auth::user() && Auth::user()->is_admin) {

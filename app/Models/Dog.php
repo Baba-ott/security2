@@ -13,5 +13,10 @@ class Dog extends Model
         'name',
         'age',
         'breed',
+        'user_id',
     ];
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

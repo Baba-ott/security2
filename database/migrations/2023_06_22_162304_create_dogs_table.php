@@ -16,6 +16,10 @@ return new class extends Migration
             $table->string('name');
             $table->string('age');
             $table->string('breed');
+
+            // Adding the user_id column as a foreign key
+            $table->foreignId('user_id')->constrained();
+
             $table->timestamps();
         });
     }
