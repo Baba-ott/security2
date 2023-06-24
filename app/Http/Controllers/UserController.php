@@ -4,16 +4,26 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+
 
 class UserController extends Controller
 {
-    public function makeAdmin(User $user) {
-        $user->is_admin = true;
-        $user->save();
+    public function makeAdmin($id) {
+        // Get the User
+        $user = User::find($id);
 
-        // redirect back with success message
-        return redirect()->back()->with('success', 'User has been made admin successfully');
+        // Check if the user is authenticated
+        if (Auth::user()) {
+            $user->is_admin = true;
+            $user->save();
+
+            return back()->with('success', 'User has been made admin successfully.');
+        }
+
+        return back()->with('error', 'You do not have permission to perform this action.');
     }
+
 
     public function someMethod()
     {
@@ -30,5 +40,7 @@ class UserController extends Controller
         // The rest of the controller method
     }
 
-
+    public function index() {
+        return view('users.index')->with('users', User::all());
+    }
 }

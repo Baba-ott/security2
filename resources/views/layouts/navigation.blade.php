@@ -8,6 +8,7 @@
                     <a href="{{ route('dashboard') }}">
                         <x-application-logo class="block h-9 w-auto fill-current text-gray-800 dark:text-gray-200" />
                     </a>
+
                 </div>
 
                 <!-- Navigation Links -->
@@ -24,6 +25,9 @@
                     <x-nav-link :href="route('dogs.create')" :active="request()->routeIs('dogs.*')">
                         {{ __('Dogs create') }}
                     </x-nav-link>
+
+
+
                 </div>
             </div>
 
@@ -44,6 +48,7 @@
                     <x-responsive-nav-link :href="route('dogs.create')" :active="request()->routeIs('dogs.*')">
                         {{ __('Dogs create') }}
                     </x-responsive-nav-link>
+
                 </div>
 
 
