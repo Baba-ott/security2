@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 
 
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -56,6 +57,9 @@ Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.e
 
 Route::get('/admin', [UserController::class, 'someMethod']);
 
+Route::get('/blog', function () {
+    return view('blog');
+})->middleware('auth')->name('blog');
 
 
 Route::get('/dashboard', function () {
