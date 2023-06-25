@@ -50,23 +50,3 @@ reduced
 Furthermore the application has rate limiting applied to protect against brute force attacks.
 
 /app/providers/RouteServiceProvider.php
-
-
-\- The application contains one or more features that require
-
-access control that prevent IDOR.
-
-Register an account, once you have done that you should be on the Dashboard page. From
-
-there you can select to become an admin, from there you can access the admin-only page.
-
-This page can only be accessed as a registered admin user. As a non admin registered user,
-
-you can not see the admin route nor acces it manually.
-
-To prevent Users from accessing control over dog’s that they didn’t create by changing the id
-
-in the URL e.g. /dogs/2 to /dogs/3, the following code was implemented in the DogController 
-
-for access controlcheck so that only the user who created the dog can edit and delete it. 
-
